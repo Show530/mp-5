@@ -11,7 +11,7 @@ export default async function RedirectionPage({params, }: {params: Promise<{alia
         if (!currAlias) {
             redirect(`/error`);
         }
-        return redirect(`${currAlias.url}`);
+        return redirect(currAlias.url);
     } catch(err) {
         console.error(err);
         return redirect("/");
