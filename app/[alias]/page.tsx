@@ -1,3 +1,5 @@
+"use client"
+
 import getUrlFromAlias from "@/lib/get-url-from-alias"
 import {redirect} from "next/navigation"
 
