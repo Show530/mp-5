@@ -1,5 +1,3 @@
-"use client"
-
 import getUrlFromAlias from "@/lib/get-url-from-alias"
 import {redirect} from "next/navigation"
 
@@ -15,8 +13,8 @@ export default async function RedirectionPage({params, }: {params: Promise<{alia
         }
         else {
             console.log(currAlias);
-            console.log('Alias is: ' + currAlias.alias);
-            console.log('URL is: ' + currAlias.url);
+            console.log('Alias is: ',  currAlias.alias);
+            console.log('URL is: ', currAlias.url);
             return redirect(currAlias.url);
         }
     } catch(err) {
