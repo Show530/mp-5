@@ -7,10 +7,13 @@ export default async function RedirectionPage({params, }: {params: Promise<{alia
     try {
         // const url = await
         const currAlias = await getUrlFromAlias(aliasFromUrl);
-        if (!currAlias) {
+
+        if (currAlias == null) {
             redirect(`/error`);
         }
-        return redirect(currAlias.url);
+        else {
+            return redirect(currAlias.url);
+        }
     } catch(err) {
         console.error(err);
         return redirect("/");
