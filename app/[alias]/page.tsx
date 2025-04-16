@@ -1,4 +1,3 @@
-// import FullPost from '@/components/full-post';
 import getUrlFromAlias from "@/lib/get-url-from-alias"
 import {redirect} from "next/navigation"
 
