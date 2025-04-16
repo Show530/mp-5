@@ -15,7 +15,6 @@ export default async function getUrlFromAlias(aliasFromUrl: string): Promise<Ali
     }
 
     const actualAlias = {
-        id: data.id,
         url: data.url,
         alias: data.alias,
     };
