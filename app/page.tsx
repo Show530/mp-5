@@ -24,7 +24,7 @@ export default function Home() {
 
                {alias.map((a) => (
                     // must have a key for mapping
-                    <AliasPreview key={a.id} alias={a} />
+                    <AliasPreview alias={a} />
                 ))}
             </div>
           </div>
