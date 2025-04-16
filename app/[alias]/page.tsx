@@ -12,6 +12,9 @@ export default async function RedirectionPage({params, }: {params: Promise<{alia
             redirect(`/error`);
         }
         else {
+            console.log(currAlias);
+            console.log('Alias is: ' + currAlias.alias);
+            console.log('URL is: ' + currAlias.url);
             return redirect(currAlias.url);
         }
     } catch(err) {
