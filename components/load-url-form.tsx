@@ -27,7 +27,7 @@ export default function LoadUrlForm(){
                     if (result === "Alias already here") {
                         setErrorMessage("Alias already exists, please try a new alias.");
                     }
-                    else if (result === "URL is invalid") {
+                    if (result === "URL is invalid") {
                         setErrorMessage("URL is invalid, could not verify, please fix URL.");
                     }
                     else {
@@ -85,7 +85,9 @@ export default function LoadUrlForm(){
                         </div>
                     </div>
                     {
-                        (errorMessage!== "" || !dataRecord )?(<div>{errorMessage}</div>): <AliasPreview alias={dataRecord} />
+                        (errorMessage!== "" || !dataRecord )
+                            ?(<div className="justify-center"><p className="text-3xl">{errorMessage}</p></div>)
+                            :<AliasPreview alias={dataRecord} />
                     }
                 </form>
             </div>
