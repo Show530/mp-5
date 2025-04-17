@@ -8,7 +8,6 @@ export default async function getUrlFromAlias(aliasFromUrl: string): Promise<Ali
     const aliasCollection = await getCollection(ALIAS_COLLECTION);
     const data = await aliasCollection.findOne({alias: aliasFromUrl});
 
-
     if(data === null) {
         return null;
     }
