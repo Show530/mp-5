@@ -1,15 +1,14 @@
 "use client";
 import LoadUrlForm from "@/components/load-url-form"
-import {useState} from "react";
-import {AliasProps} from "@/types"
-import AliasPreview from "@/components/alias-preview"
+// import {useState} from "react";
+// import {AliasProps} from "@/types"
 
 export default function Home() {
-    const [alias, setAlias] = useState<AliasProps[]>([]);
-
-    function append(newAlias: AliasProps ) {
-        setAlias([newAlias]);
-    }
+    // const [alias, setAlias] = useState<AliasProps[]>([]);
+    //
+    // function append(newAlias: AliasProps ) {
+    //     setAlias([newAlias]);
+    // }
 
     return(
       <>
@@ -20,12 +19,13 @@ export default function Home() {
               <p className="text-xl">Shorten your URLs into shorter links!</p>
             </div>
             <div className="flex flex-col items-center p-4">
-              <LoadUrlForm append={append}/>
+              {/*<LoadUrlForm append={append}/>*/}
+              <LoadUrlForm />
 
-               {alias.map((a) => (
-                    // must have a key for mapping
-                    <AliasPreview alias={a} />
-                ))}
+               {/*{alias.map((a) => (*/}
+               {/*     // must have a key for mapping*/}
+               {/*     <AliasPreview alias={a} />*/}
+               {/* ))}*/}
             </div>
           </div>
         </main>

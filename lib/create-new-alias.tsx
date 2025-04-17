@@ -3,7 +3,7 @@ import getCollection, {ALIAS_COLLECTION} from "@/db";
 import {AliasProps} from "@/types";
 
 
-export default async function createNewAlias( url:string, alias:string): Promise<AliasProps> {
+export default async function createNewAlias( url:string, alias:string): Promise<AliasProps|string> {
     const isValidUrl = (url:string) => {
         const urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
             '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
@@ -17,7 +17,8 @@ export default async function createNewAlias( url:string, alias:string): Promise
 
     // throw error is url is not valid
     if(!isValidUrl(url)) {
-        throw new Error(`Invalid URL: ${url}`);
+        // throw new Error(`Invalid URL: ${url}`);
+        return "URL is invalid";
     }
 
     const a ={
@@ -31,7 +32,8 @@ export default async function createNewAlias( url:string, alias:string): Promise
     // check if alias exists
     const aliasIsHere = await aliasCollection.findOne({alias});
     if(aliasIsHere) {
-        throw new Error("Alias already exists!");
+        // throw new Error("Alias already exists!");
+        return "Alias already here";
     }
 
     // ... is a shorthand to append at end of posts
