@@ -3,7 +3,7 @@ import getCollection, {ALIAS_COLLECTION} from "@/db";
 import {AliasProps} from "@/types"
 
 export default async function getUrlFromAlias(aliasFromUrl: string): Promise<AliasProps | null> {
-    // don't use id!
+    // don't use id- use string!
 
     const aliasCollection = await getCollection(ALIAS_COLLECTION);
     const data = await aliasCollection.findOne({alias: aliasFromUrl});

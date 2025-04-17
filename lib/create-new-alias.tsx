@@ -4,26 +4,8 @@ import {AliasProps} from "@/types";
 
 
 export default async function createNewAlias( url:string, alias:string): Promise<AliasProps|string> {
-    // regexp format validation
-    const isValidUrl = (url:string) => {
-        const urlPattern = new RegExp('^(https?:\\/\\/)?' +
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-            '((\\d{1,3}\\.){3}\\d{1,3}))' +
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-            '(\\?[;&a-z\\d%_.~+=-]*)?' +
-            '(\\#[-a-z\\d_]*)?$', 'i');
-        return !!urlPattern.test(url);
-        //     return !!urlPattern.test(url);
-    }
 
-
-    // throw error is url is not valid
-    if(!isValidUrl(url)) {
-        // throw new Error(`Invalid URL: ${url}`);
-        console.log("Invalid URL caught in reg ex");
-        return "INVALID URL";
-    }
-    // trying request/response
+    // Checking url using a try catch- request/response
     let responseStatus = 0;
     try {
         const response = await fetch(url);
