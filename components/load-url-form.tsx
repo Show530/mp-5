@@ -23,18 +23,23 @@ export default function LoadUrlForm(){
                 <h2 className="text-2xl text-center">Use this form to shorten a URL!</h2>
                 <form onSubmit={async (e)=>{
                     e.preventDefault();
-                    const result = await createNewAlias(url, alias)
-                    if (result === "Alias already here") {
+                    const result = await createNewAlias(url, alias);
+                    console.log("Result is: ", result);
+                    if (result === "ALIAS EXISTS") {
+                        console.log("Setting error to: ", result);
                         setErrorMessage("Alias already exists, please try a new alias.");
                     }
-                    if (result === "URL is invalid") {
+                    if(result === "BAD RESPONSE"){
+                        console.log("Setting error to: ", result);
+                        setErrorMessage("Bad HTTP response, please fix URL")
+                    }
+                    if (result === "INVALID URL") {
+                        console.log("Setting error to: ", result);
                         setErrorMessage("URL is invalid, could not verify, please fix URL.");
                     }
-                    else {
+                    else if(typeof(result) !=="string"){
+                        console.log("No error, should set data!")
                         setErrorMessage("");
-                    }
-
-                    if(errorMessage === "" && typeof(result) !=="string"){
                         setDataRecord(result);
                     }
                     // createNewAlias(url, alias)
