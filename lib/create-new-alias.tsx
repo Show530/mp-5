@@ -41,7 +41,6 @@ export default async function createNewAlias( url:string, alias:string): Promise
     const res = await aliasCollection.insertOne({ ...a});
 
     if (!res.acknowledged) {
-        // throw new Error("Db insert failed");
         return "DB FAILED";
     }
     // // ... is a shorthand to append at end of posts
