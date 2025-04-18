@@ -16,7 +16,7 @@ export default async function createNewAlias( url:string, alias:string): Promise
         }
     }
     catch(error) {
-        return "INVALID URL";
+        return "INVALID URL" + error;
     }
 
     const a ={

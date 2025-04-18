@@ -33,7 +33,7 @@ export default function LoadUrlForm(){
                         // console.log("Setting error to: ", result);
                         setErrorMessage("Bad HTTP response, please fix URL")
                     }
-                    else if (result === "INVALID URL") {
+                    else if (typeof(result) === "string" && result.includes("INVALID URL")) {
                         // console.log("Setting error to: ", result);
                         setErrorMessage("URL is invalid, could not verify, please fix URL.");
                     }
