@@ -25,7 +25,10 @@ export default function LoadUrlForm(){
                     e.preventDefault();
                     const result = await createNewAlias(url, alias);
                     // console.log("Result is: ", result);
-                    if (result === "ALIAS EXISTS") {
+                    if(result === "URL OR ALIAS EMPTY") {
+                        setErrorMessage("URL and alias cannot be empty, please try again.");
+                    }
+                    else if (result === "ALIAS EXISTS") {
                         // console.log("Setting error to: ", result);
                         setErrorMessage("Alias already exists, please try a new alias.");
                     }

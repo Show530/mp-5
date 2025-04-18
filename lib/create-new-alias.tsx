@@ -5,6 +5,12 @@ import {AliasProps} from "@/types";
 
 export default async function createNewAlias( url:string, alias:string): Promise<AliasProps|string> {
 
+    if(url === ""){
+        return "URL OR ALIAS EMPTY"
+    }
+    if(alias === ""){
+        return "URL OR ALIAS EMPTY"
+    }
     // Checking url using a try-catch: request/response
     let responseStatus = 0;
     try {
