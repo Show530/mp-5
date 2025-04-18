@@ -5,20 +5,20 @@ import {AliasProps} from "@/types";
 
 export default async function createNewAlias( url:string, alias:string): Promise<AliasProps|string> {
 
-    // Checking url using a try catch- request/response
+    // Checking url using a try-catch: request/response
     let responseStatus = 0;
     try {
         const response = await fetch(url);
-        console.log("response.status =", response.status); // response.status = 200
+        // console.log("response.status =", response.status); // response.status = 200
         responseStatus = response.status;
 
-        if (responseStatus < 200 && responseStatus > 400){
-            console.log("In if statement for issues: ", responseStatus)
+        if (responseStatus < 200 && responseStatus >= 399){
+            // console.log("In if statement for issues: ", responseStatus)
             return "BAD RESPONSE";
         }
     }
     catch(error) {
-        console.error("Invalid URL caught in request fetch: ", error);
+        // console.error("Invalid URL caught in request fetch: ", error);
         return "INVALID URL";
     }
 
@@ -41,7 +41,8 @@ export default async function createNewAlias( url:string, alias:string): Promise
     const res = await aliasCollection.insertOne({ ...a});
 
     if (!res.acknowledged) {
-        throw new Error("Db insert failed");
+        // throw new Error("Db insert failed");
+        return "DB FAILED";
     }
     // // ... is a shorthand to append at end of posts
     // return{...a, id:"NewId"}

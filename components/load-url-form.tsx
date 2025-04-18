@@ -24,21 +24,25 @@ export default function LoadUrlForm(){
                 <form onSubmit={async (e)=>{
                     e.preventDefault();
                     const result = await createNewAlias(url, alias);
-                    console.log("Result is: ", result);
+                    // console.log("Result is: ", result);
                     if (result === "ALIAS EXISTS") {
-                        console.log("Setting error to: ", result);
+                        // console.log("Setting error to: ", result);
                         setErrorMessage("Alias already exists, please try a new alias.");
                     }
-                    if(result === "BAD RESPONSE"){
-                        console.log("Setting error to: ", result);
+                    else if(result === "BAD RESPONSE"){
+                        // console.log("Setting error to: ", result);
                         setErrorMessage("Bad HTTP response, please fix URL")
                     }
-                    if (result === "INVALID URL") {
-                        console.log("Setting error to: ", result);
+                    else if (result === "INVALID URL") {
+                        // console.log("Setting error to: ", result);
                         setErrorMessage("URL is invalid, could not verify, please fix URL.");
                     }
+                    else if (result === "DB FAILED"){
+                        // console.log("Setting error to: ", result);
+                        setErrorMessage("Database insert failed, please just try again.");
+                    }
                     else if(typeof(result) !=="string"){
-                        console.log("No error, should set data!")
+                        // console.log("No error, should set data!")
                         setErrorMessage("");
                         setDataRecord(result);
                     }
@@ -91,7 +95,7 @@ export default function LoadUrlForm(){
                     </div>
                     {
                         (errorMessage!== "" || !dataRecord )
-                            ?(<div className="justify-center"><p className="text-3xl">{errorMessage}</p></div>)
+                            ?(<div className="bg-blue-50 p-4 mt-2 justify-center"><p className="text-center text-3xl">{errorMessage}</p></div>)
                             :<AliasPreview alias={dataRecord} />
                     }
                 </form>
